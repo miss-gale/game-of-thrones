@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>Game of Thrones</title>
+          <link rel="stylesheet" type="text/css" href="GameOfThrones.css">
+          <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+          <script>
+
+          $(document).ready(function(){
+
+               $('.housePics').on('click', 'img', function(){
+
+                    var nameOfHouse = "";
+                    var region = "";
+                    var coatOfArms = "";
+                    var words = "";
+                    var titles = "";
+
+                    var houseNumber = $(this).attr("id");
+                    var asoiaURL = "https://www.anapioficeandfire.com/api/houses/" + houseNumber;
+
+                    console.log(asoiaURL);
+
+                    $.get(asoiaURL, function(asoiafResponse){
+
+                         var titlesString = asoiafResponse.titles[0];
+                         for (var i = 1; i < asoiafResponse.titles.length; i++){
+                              titlesString += ", " + asoiafResponse.titles[i];
+                         }
+
+                         var detailsHTML = `<fieldset>
+                              <h3>${asoiafResponse.name}</h3>
+                              <p>Region: ${asoiafResponse.region}</p>
+                              <p>Words: ${asoiafResponse.words}</p>
+                              <p>Titles: ${titlesString}</p>
+                         </fieldset>`
+
+                         $('.houseDetails').html(detailsHTML);
+
+                    }, 'json');
+
+               })
+
+          })
+
+          </script>
+     </head>
+     <body>
+
+          <img class="banner" src="GOT-images/logo.png" alt="Game of Thrones logo image.">
+          <hr></hr>
+          <h2>Click a house to reveal the details:</h2>
+
+          <div class="housePics">
+               <img id="378" name="targaryen" src="GOT-images/targaryen.png" alt="Targaryen house image.">
+               <img id="17" name="baratheon" src="GOT-images/baratheon.png" alt="Baratheon house image.">
+               <img id="362" name="stark" src="GOT-images/stark.png" alt="Stark house image.">
+               <img id="229" name="lannister" src="GOT-images/lannister.png" alt="Lannister house image.">
+          </div>
+
+          <div class="houseDetails">
+
+               <h2>House Details:</h2>
+
+          </div>
+
+     </body>
+</html>

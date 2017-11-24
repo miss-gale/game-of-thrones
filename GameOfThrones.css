@@ -1,0 +1,39 @@
+*{
+     margin: 0px;
+     padding: 0px;
+     font-family: "Arial", sans-serif;
+}
+
+body{
+     width: 920px;
+     margin-left: 10px;
+}
+
+h2{
+     margin: 10px 0px 10px 20px;
+}
+
+fieldset{
+     padding: 10px;
+}
+
+.banner{
+     margin: 5px 0px 5px 75px;
+}
+
+.housePics img{
+     height: 120px;
+     margin-left: 20px;
+}
+
+.houseDetails{
+     width: 600px;
+     margin: 10px 0px 10px 150px;
+     border: solid 3px black;
+     text-align: center;
+     padding: 10px;
+}
+
+.houseDetails p{
+     margin: 5px;
+}
